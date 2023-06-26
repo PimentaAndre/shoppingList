@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cadastrar Produto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Produto</ion-label>
+      <ion-input type="text" [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Preço</ion-label>
+      <ion-input type="number" [(ngModel)]="product.price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Supermercado</ion-label>
+      <ion-input type="text" [(ngModel)]="marketName"></ion-input>
+    </ion-item>
+
+    <ion-label *ngIf="product.superMarkets.length > 0" style="font-size: 2rem; margin-left: 1.4rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
+      Supermercados Adicionados:
+    </ion-label>
+
+    <ion-item *ngFor="let superMarket of marketArray" style="font-size: 1.8rem; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      {{ superMarket.name }}
+
+      <span>
+        <button ion-button round color="danger" (click)="deleteMarketById(superMarketsId)" end>
+          <ion-icon name="trash"> Deletar </ion-icon>
+        </button>
+      </span>
+    </ion-item>
+
+
+
+  </ion-list>
+
+  <button ion-button round (click)="addMarket()">Adicionar Super Mercado</button>
+
+  <button ion-button round (click)="postProduct()">Cadastrar Produto</button>
+
+  <br>
+
+
+  <button ion-button round (click)="editProduct()">
+    <ion-icon name="ios-create-outline"> Editar Produto </ion-icon>
+  </button>
+
+
+
+</ion-content>
